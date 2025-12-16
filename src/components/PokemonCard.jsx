@@ -1,29 +1,34 @@
-import {Card, CardMedia, CardContent, Typography, Button , CardActions} from "@mui/material";
+import { Card, CardActions, CardContent, CardMedia, Typography, Button } from "@mui/material";
+
 export default function PokemonCard({ pokemon }) {
-    return (
-        <Card>
-            <CardMedia
-                component="img"
-                height="200"
-                image={pokemon.image}
-                alt={pokemon.nombre}
+    console.log("IMAGEN:", pokemon.image);
+  return (
+    <Card>
+      <CardMedia
+        component="img"
+        image ={pokemon.imagen}
+        alt={pokemon.nombre}
+        sx={{
+             width: 220,
+             height: 220,
+             objectFit: "contain",
+             mx: "auto"   
+              }}
+      />
 
+      <CardContent>
+        <Typography variant="h5" align="center" sx={{ mb: 1 }}>
+          {pokemon.nombre}
+        </Typography>
 
-            />
-            <CardContent>
-                <Typography variant="h5" component="div" align="center" gutterBottom>
-                    {pokemon.nombre}
-                  </Typography>
-                <Typography variant="body2" sx ={{color: 'text.secondary'}} >
-                    tipo:{pokemon.tipo}
-                </Typography>
-            </CardContent>
+        <Typography variant="body2" color="text.secondary">
+          Tipo: {pokemon.tipo}
+        </Typography>
+      </CardContent>
 
-            <CardActions>
-            <Button size="small">Ver detalles / </Button>
-            </CardActions>
-        </Card>
-
-    );
+      <CardActions>
+        <Button size="small">Ver detalles</Button>
+      </CardActions>
+    </Card>
+  );
 }
-
