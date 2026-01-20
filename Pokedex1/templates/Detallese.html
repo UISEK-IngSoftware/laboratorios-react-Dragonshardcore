@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <p class="p-2">Bienvenido a la central de Datos Entrenadores de Charles.Corp</p>
+
+  <div class="card text-center h-100">
+    {% if e.image %}
+      <img src="{{ e.image.url }}" class="card-img-top mx-auto mt-2" alt="{{ e.nombre }}" style="height: 200px; object-fit: contain;" />
+    {% elif e.imagen %}
+      <img src="{{ e.imagen }}" class="card-img-top mx-auto mt-2" alt="{{ e.nombre }}" style="height: 200px; object-fit: contain;" />
+    {% endif %}
+
+    <div class="card-body p-2">
+      <h6 class="card-title mb-2">{{ e.nombre }}</h6>
+
+      <small class="text-muted d-block mb-1">Nivel: {{ e.nivel }}</small>
+      <small class="text-muted d-block mb-1">Nacimiento: {{ e.fecha_de_nacimiento }}</small>
+      <small class="text-muted d-block">Algo sobre mí: {{ e.descripciones }}</small>
+    </div>
+  </div>
+
+  <!-- TITULO -->
+  <h4 class="text-center mb-3">Pokemones de {{ e.nombre }}</h4>
+
+  <!-- POKEMONES -->
+  <div class="row justify-content-center">
+    {% for pokemon in p %}
+      <div class="col-sm-6 col-md-4 col-lg-3 mb-4">
+        <div class="card text-center h-100">
+          {% if pokemon.image %}
+            <img src="{{ pokemon.image.url }}" class="card-img-top mx-auto mt-2" alt="{{ pokemon.nombre }}" style="height: 200px; object-fit: contain;" />
+          {% elif pokemon.imagen %}
+            <img src="{{ pokemon.imagen }}" class="card-img-top mx-auto mt-2" alt="{{ pokemon.nombre }}" style="height: 200px; object-fit: contain;" />
+          {% endif %}
+
+          <div class="card-body p-2">
+            <h6 class="card-title mb-2">{{ pokemon.nombre }}</h6>
+            <small class="text-muted d-block mb-1">Tipo: {{ pokemon.tipo }}</small>
+            <small class="text-muted d-block mb-1">Peso: {{ pokemon.peso }}</small>
+            <small class="text-muted d-block mb-1">Altura: {{ pokemon.altura }}</small>
+          </div>
+        </div>
+      </div>
+    {% empty %}
+      <p class="text-center">Este entrenador no tiene pokémones.</p>
+    {% endfor %}
+  </div>
+{% endblock %}

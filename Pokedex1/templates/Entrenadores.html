@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <p class="p-2">Bienvenido a la central de Datos Entrenadores de Charles.Corp</p>
+
+  <div class="container mt-4">
+    <div class="row">
+      {% for e in entrenador %}
+        <div class="col-6 col-sm-4 col-md-3 col-lg-2 mb-3">
+          <div class="card text-center" style="height: 100%;">
+            {% if e.image %}
+              <img src="{{ e.image.url }}" class="card-img-top mx-auto mt-2" alt="{{ e.nombre }}"style="height: 180px; object-fit: contain;" />
+            {% elif e.imagen %}
+              <img src="{{ e.imagen }}" class="card-img-top mx-auto mt-2" alt="{{ e.nombre }}"style="height: 180px; object-fit: contain;" />
+            {% endif %}
+
+            <div class="card-body p-2">
+              <h6 class="card-title mb-2">{{ e.nombre }}</h6>
+
+              <small class="text-muted d-block mb-1">Nivel: {{ e.nivel }}</small>
+
+              <small class="text-muted d-block mb-1">Nacimiento: {{ e.fecha_de_nacimiento }}</small>
+
+              <small class="text-muted d-block">Algo sobre mí: {{ e.descripciones }}</small>
+              {% if user.is_authenticated %}
+                <a href="{% url 'detalle_entrenadores' e.id %}" class="btn btn-info mt-2 w-100"><i class="fa-solid fa-eye"></i> Ver Detalles</a>
+
+                <a href="{% url 'editar_entrenador' e.id %}" class="btn btn-warning mt-2 w-100"><i class="fa-solid fa-pencil"></i> Editar</a>
+
+                <a href="{% url 'eliminar_entrenador' e.id %}" class="btn btn-danger mt-2 w-100"><i class="fa-solid fa-trash"></i> Eliminar</a>
+              {% endif %}
+            </div>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+{% endblock %}
