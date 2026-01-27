@@ -1,0 +1,15 @@
+.page-background {
+  background-color: #7b7a7a;
+  background-image: repeating-linear-gradient(45deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0.06) 9px, rgba(0, 0, 0, 0.04) 6px, rgba(0, 0, 0, 0.04) 12px);
+  min-height: 100vh;
+  margin-top: -45px;
+  padding-top: 80px;
+  padding-bottom: 40px;
+}
+
+.white-card-container {
+  background-color: #ffffff;
+  border-radius: 15px;
+  padding: 32px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+}

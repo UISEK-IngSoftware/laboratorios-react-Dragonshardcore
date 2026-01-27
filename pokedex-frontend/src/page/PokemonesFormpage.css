@@ -1,0 +1,49 @@
+/* Estenedor principal con el fondo gris y el patrón de líneas */
+.form-container-wrapper {
+    background-color: #7b7a7a;
+    background-image: repeating-linear-gradient(45deg, rgba(255,255,255,0.05), rgba(255,255,255,0.05) 10px, rgba(0,0,0,0.05) 10px, rgba(0,0,0,0.05) 20px);
+    min-height: 100vh;
+    margin-top: -45px;
+    padding-top: 100px;
+    padding-bottom: 40px;
+}
+
+/* El cuadro blanco (Paper) */
+.form-paper {
+    padding: 32px;
+    border-radius: 20px !important;
+}
+
+/* El botón de subir archivo */
+.upload-btn {
+    padding: 12px !important;
+    border-style: dashed !important;
+}
+
+/* El botón de guardar (estilo oscuro) */
+.submit-btn {
+    background-color: #2b2b2b !important;
+    margin-top: 24px !important;
+    padding: 12px !important;
+    font-weight: bold !important;
+}
+
+.submit-btn:hover {
+    background-color: #000 !important;
+}
+
+/* Contenedor de vista previa */
+.preview-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 8px;
+}
+
+.preview-img {
+    width: 100px;
+    height: 100px;
+    object-fit: contain;
+    border-radius: 8px;
+    border: 2px solid #eee;
+}
