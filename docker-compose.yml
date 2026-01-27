@@ -1,0 +1,41 @@
+services:
+  backend:
+    build: .
+    container_name: backend
+    ports:
+      - "8000:8000"
+    environment:
+      - USE_POSTGRES=1
+      - DB_NAME=pokedexdb
+      - DB_USER=pokedexuser
+      - DB_PASSWORD=pokedexpass
+      - DB_HOST=db
+      - DB_PORT=5432
+    depends_on:
+      - db
+    volumes:
+      - .:/app
+
+  db:
+    image: postgres:15
+    container_name: pokedex_db
+    environment:
+      POSTGRES_DB: pokedexdb
+      POSTGRES_USER: pokedexuser
+      POSTGRES_PASSWORD: pokedexpass
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+  frontend:
+    build: ./pokedex-frontend
+    container_name: frontend
+    ports:
+      - "5173:5173"
+    depends_on:
+      - backend
+    environment:
+      - VITE_API_AUTH_URL=http://localhost:8000/o
+      - VITE_API_BASE_URL=http://localhost:8000/api
+
+volumes:
+  postgres_data:
